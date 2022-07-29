@@ -1,2 +1,2 @@
-$("#comments_area").html("<%= j(render 'book_comments/comment_index', books: @books, book_comment: @book_comment) %>");
+$("#comments_area").html("<%= j(render 'book_comments/comment_index', books: @comment.book) %>");
 $("textarea").val('');
