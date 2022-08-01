@@ -2,28 +2,25 @@
     <div class="row">
         <div class="col-xs-6">
             <h2><%= @user.name %>さんとのチャット</h2>
-            
 
-            <table class="message table">
-              
-              </thead>
+
+            <table id = "message table">
               <% @chats.each do |chat| %>
                 <% if chat.user_id == current_user.id %>
-                <tbody>
                   <tr>
-                    <th>
-                      <p style="text-align: left;"><%= chat.message %></p>
-                    </th>
+                    <th></th>
+                    <h4>
+                      <p style="text-align: right;"><%= chat.message %></p>
+                    </h4>
                     <th></th>
                   </tr>
                 <% else %>
                   <tr>
                     <th></th>
                     <th>
-                      <p style="text-align: right;"><%= chat.message %></p>
+                      <p style="text-align: left;"><%= chat.message %></p>
                     </th>
                   </tr>
-                </tbody>
                 <% end %>
               <% end %>
             </table>

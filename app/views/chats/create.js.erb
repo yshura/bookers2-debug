@@ -1,4 +1,2 @@
-$('.message').append("<p style='text-align: left;'><%= @chat.message %></p>");
-
-
-$('input[type=text]').val("")
+$("#message table").append("<p style='text-align: right;'><%= @chat.message %></p>");
+$("input[type=text]").val("")
