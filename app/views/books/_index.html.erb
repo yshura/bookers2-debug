@@ -21,10 +21,11 @@
           <%= render "favorites/favorite_btn", book: book %>
         </td>
         <td>
-          <%= link_to "コメント数: #{book.book_comments.count}", book_path(book.id) %>
+          <%= render "book_comments/count", book: book %>
         </td>
+
         <td>
-          <p class="view-count">閲覧数: <%= book.view_counts.count %></p>
+          <p class="view-count">閲覧数:<%= book.view_counts.count %></p>
         </td>
       </tr>
     <% end %>
