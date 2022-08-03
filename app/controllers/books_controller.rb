@@ -6,6 +6,19 @@ class BooksController < ApplicationController
     @books = Book.find(params[:id])
     @user = @books.user
     @book_comment = BookComment.new
+    
+    @book_detail = Book.find(params[:id])
+    unless ViewCount.find_by(user_id: current_user.id, book_id: @book_detail.id)
+      current_user.view_counts.create(book_id: @book_detail.id)
+    end
+
+    #@see = See.find_by(ip: request.remote_ip)
+    #if @see
+      #@books = Book.find(params[:id])
+    #else
+      #@books = Book.find(params[:id])
+      #See.create(ip: request.remote_ip)
+    #end
   end
 
   def index
@@ -18,6 +31,19 @@ class BooksController < ApplicationController
       }
     @book = Book.new
     @user = current_user
+    
+    #@book_detail = Book.find(params[:id])
+    unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
+      current_user.view_counts.create(book_id: @book.id)
+    end
+
+    #@see = See.find_by(ip: request.remote_ip)
+    #if @see
+     # @books = Book.all
+    #else
+     # @books = Book.all
+      #See.create(ip: request.remote_ip)
+    #end
   end
 
   def create
