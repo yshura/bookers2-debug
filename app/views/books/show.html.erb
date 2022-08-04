@@ -27,6 +27,20 @@
           <td>
             <p class="view-count">閲覧数: <%= @book_detail.view_counts.count %></p>
           </td>
+          <td>
+            <div id="star-rate<%= @books.id%>"></td>
+             <script>
+              $('#star-rate<%= @books.id %>').empty();
+              $('#star-rate<%= @books.id%>').raty({
+                 size      : 36,
+                 starOff   : '<%= asset_path('star-off.png') %>',
+                 starOn    : '<%= asset_path('star-on.png') %>',
+                 half      : false,
+                 readOnly: true,
+                 score: <%= @books.star %>,
+               });
+             </script>
+          </td>
 
            <% if @user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@books.id), class: "btn btn-sm btn-success" %></td>
