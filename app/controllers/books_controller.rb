@@ -22,6 +22,12 @@ class BooksController < ApplicationController
   end
 
   def index
+    if params[:latest]
+     @books = Book.latest
+    elsif params[:star_count]
+     @books = Book.star_count
+    end
+
     to = Time.current.at_end_of_day
     from = (to - 6.day).at_beginning_of_day
     @books = Book.includes(:favorited_users).
@@ -83,9 +89,7 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body, :image, :star)
   end
 
-  def validate_on_update
-    errors.add(:star) if star_changed?
-  end
+
 
   def correct_user
     @book = Book.find(params[:id])

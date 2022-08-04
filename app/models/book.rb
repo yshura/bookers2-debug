@@ -5,8 +5,11 @@ class Book < ApplicationRecord
   has_many :favorites,dependent: :destroy
   has_many :book_comments, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
-  
+
   has_many :view_counts, dependent: :destroy
+
+  scope :latest, -> {order(created_at: :desc)}
+  scope :star_count, -> {order(star: :desc)}
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
