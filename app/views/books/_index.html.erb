@@ -17,7 +17,7 @@
         </td>
         <td><%= link_to book.title,book %></td>
         <td><%= book.body %></td>
-        <td id = "favorite_btn-<%= book.id %>">
+        <td id="favorite_btn-<%= book.id %>">
           <%= render "favorites/favorite_btn", book: book %>
         </td>
         <td>
@@ -28,10 +28,10 @@
           <p class="view-count">閲覧数:<%= book.view_counts.count %></p>
         </td>
         <td>
-            <div id="star-rate<%= book.id%>"></td>
+            <div id="star-rate<%= book.id %>"></td>
              <script>
               $('#star-rate<%= book.id %>').empty();
-              $('#star-rate<%= book.id%>').raty({
+              $('#star-rate<%= book.id %>').raty({
                  size      : 36,
                  starOff   : '<%= asset_path('star-off.png') %>',
                  starOn    : '<%= asset_path('star-on.png') %>',
